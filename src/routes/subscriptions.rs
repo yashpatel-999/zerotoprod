@@ -13,7 +13,7 @@ pub async fn subscribe(
     form: web::Form<FormData>,
     pool: web::Data<PgPool>,
 ) -> HttpResponse {
-    
+    log::info!("Saving new subscriber details in the database");
     let subscriber_id = Uuid::new_v4();
     let result = sqlx::query(
         "INSERT INTO subscriptions (id, email, name, subscribed_at) VALUES ($1, $2, $3, $4)"
@@ -27,7 +27,7 @@ pub async fn subscribe(
     
     match result {
         Ok(_) => {
-            println!("Successfully saved subscriber: {}", form.email);
+            log::info!("New subscriber details have been saved");
             HttpResponse::Ok().json(serde_json::json!({
                 "message": "Subscription successful",
                 "subscriber": {

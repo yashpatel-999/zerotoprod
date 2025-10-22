@@ -36,7 +36,7 @@ pub async fn subscribe(form: web::Form<FormData>, pool: web::Data<PgPool>) -> Ht
             }))
         }
         Err(e) => {
-            tracing::error!("request_id {} - Failed to execute query: {:?}",request_id,e);
+            tracing::error!("request_id {} - Failed to execute query: {:?}",subscriber_id,e);
 
             HttpResponse::InternalServerError().json(serde_json::json!({
                 "error": "Failed to save subscription"

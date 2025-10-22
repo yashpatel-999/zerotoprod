@@ -1,6 +1,7 @@
 pub mod configuration;
 pub mod startup;
 pub mod routes;
+pub mod telemetry;
 
 use actix_web::dev::Server;
 use actix_web::{web, App, HttpResponse, HttpServer};

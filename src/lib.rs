@@ -3,6 +3,9 @@ pub mod startup;
 pub mod routes;
 pub mod telemetry;
 
+#[cfg(test)]
+pub mod tests;
+
 use actix_web::dev::Server;
 use actix_web::{web, App, HttpResponse, HttpServer};
 use std::net::TcpListener;

@@ -6,10 +6,17 @@ use std::net::TcpListener;
 use sqlx::{Connection,Executor,PgConnection,PgPool};
 use once_cell::sync::Lazy;
 
-static TRACING: Lazy<()>=Lazy::new(||{
-    let subscribe=get_subscriber("test".into(),"debug".into());
-    init_subscriber(subscriber);
-})
+static TRACING: Lazy<()> = Lazy::new(|| {
+    let default_filter_level = "info".to_string();
+    let subscriber_name = "test".to_string();
+    if std::env::var("TEST_LOG").is_ok() {
+        let subscriber = get_subscriber(subscriber_name, default_filter_level, std::io::stdout);
+        init_subscriber(subscriber);
+    } else {
+        let subscriber = get_subscriber(subscriber_name, default_filter_level, std::io::sink);
+        init_subscriber(subscriber);
+    };
+});
 
 pub struct TestApp{
     pub address:String,
@@ -17,11 +24,11 @@ pub struct TestApp{
 }
 
 async fn spawn_app() -> TestApp {
-    Lazy::force(&TRACING)
+    Lazy::force(&TRACING);
 
     let listener = TcpListener::bind("127.0.0.1:0").expect("Failed to bind random port");
     let port = listener.local_addr().unwrap().port();
-    let address=format!("127.0.0.1:{}",port);
+    let address = format!("http://127.0.0.1:{}", port);
 
     let mut configuration=get_configuration().expect("Failed to read configuration");
     configuration.database.database_name=Uuid::new_v4().to_string();

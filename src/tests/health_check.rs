@@ -1,20 +1,20 @@
 use crate::startup::run; 
-use crate::telemetry::{get_subscriber,init_subscriber};
+use crate::telemetry::{get_dual_subscriber,init_subscriber};
 use crate::configuration::{get_configuration,DatabaseSettings};
 use uuid::Uuid;
 use std::net::TcpListener;
 use sqlx::{Connection,Executor,PgConnection,PgPool};
 use once_cell::sync::Lazy;
-use secrecy::ExposeSecret
+use secrecy::ExposeSecret;
 
 static TRACING: Lazy<()> = Lazy::new(|| {
     let default_filter_level = "info".to_string();
     let subscriber_name = "test".to_string();
     if std::env::var("TEST_LOG").is_ok() {
-        let subscriber = get_subscriber(subscriber_name, default_filter_level, std::io::stdout);
+        let (subscriber,_guard) = get_dual_subscriber(subscriber_name, default_filter_level, "TestLogs","zerotoprod");
         init_subscriber(subscriber);
     } else {
-        let subscriber = get_subscriber(subscriber_name, default_filter_level, std::io::sink);
+        let (subscriber,_guard) = get_dual_subscriber(subscriber_name, default_filter_level,  "TestLogs","zerotoprod");
         init_subscriber(subscriber);
     };
 });

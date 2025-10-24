@@ -36,3 +36,21 @@ Response HTTP/1.1 200 OK
 2025-10-24T06:10:47.697222Z  INFO shutting down idle worker
 2025-10-24T06:10:47.698686Z  INFO shutting down idle worker
 2025-10-24T06:10:47.700173Z  INFO shutting down idle worker
+2025-10-24T07:06:04.784842Z  INFO starting 8 workers
+2025-10-24T07:06:04.785162Z  INFO Tokio runtime found; starting in existing Tokio runtime
+2025-10-24T07:06:04.785391Z  INFO starting service: "actix-web-service-127.0.0.1:8000", workers: 8, listening on: 127.0.0.1:8000
+2025-10-24T07:06:25.839955Z  INFO HTTP request{http.method=POST http.route=/subscriptions http.flavor=1.1 http.scheme=http http.host=127.0.0.1:8000 http.client_ip=127.0.0.1 http.user_agent=PostmanRuntime/7.49.0 http.target=/subscriptions otel.name=HTTP POST /subscriptions otel.kind="server" request_id=f1a20632-ab52-435e-ba92-29a6c43ca107}:Adding a new subscriber{request_id=038b8874-7f86-4b9e-8ccb-071bea0132cc subscriber_email=tysp@gmail.com subscriber_name=    }: return=HttpResponse { error: None, res: 
+Response HTTP/1.1 400 Bad Request
+  headers:
+  body: Sized(0)
+ }
+2025-10-24T07:06:44.489745Z  INFO SIGINT received; starting forced shutdown
+2025-10-24T07:06:44.490497Z  INFO shutting down idle worker
+2025-10-24T07:06:44.490957Z  INFO shutting down idle worker
+2025-10-24T07:06:44.491513Z  INFO accept thread stopped
+2025-10-24T07:06:44.491927Z  INFO shutting down idle worker
+2025-10-24T07:06:44.492412Z  INFO shutting down idle worker
+2025-10-24T07:06:44.492886Z  INFO shutting down idle worker
+2025-10-24T07:06:44.493439Z  INFO shutting down idle worker
+2025-10-24T07:06:44.493888Z  INFO shutting down idle worker
+2025-10-24T07:06:44.494319Z  INFO shutting down idle worker

@@ -5,6 +5,8 @@ use sqlx::PgPool;
 use std::net::TcpListener;
 use secrecy::ExposeSecret;
 
+
+
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
     let (subscriber,_guard)=get_dual_subscriber(

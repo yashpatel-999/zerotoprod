@@ -6,16 +6,19 @@ use std::net::TcpListener;
 use sqlx::{Connection,Executor,PgConnection,PgPool};
 use once_cell::sync::Lazy;
 use secrecy::ExposeSecret;
+use tracing_appender::non_blocking::WorkerGuard;
 
 static TRACING: Lazy<()> = Lazy::new(|| {
     let default_filter_level = "info".to_string();
     let subscriber_name = "test".to_string();
     if std::env::var("TEST_LOG").is_ok() {
-        let (subscriber,_guard) = get_dual_subscriber(subscriber_name, default_filter_level, "TestLogs","zerotoprod");
+        let (subscriber,guard) = get_dual_subscriber(subscriber_name, default_filter_level, "TestLogs","zerotoprod");
         init_subscriber(subscriber);
+        std::mem::forget(guard);
     } else {
-        let (subscriber,_guard) = get_dual_subscriber(subscriber_name, default_filter_level,  "TestLogs","zerotoprod");
+        let (subscriber,guard) = get_dual_subscriber(subscriber_name, default_filter_level,  "TestLogs","zerotoprod");
         init_subscriber(subscriber);
+        std::mem::forget(guard);
     };
 });
 

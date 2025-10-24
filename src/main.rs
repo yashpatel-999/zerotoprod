@@ -1,6 +1,6 @@
 use zerotoprod::configuration::get_configuration;
 use zerotoprod::startup::run;
-use zerotoprod::telemetry::{get_subscriber, init_subscriber,get_dual_subscriber};
+use zerotoprod::telemetry::{init_subscriber,get_dual_subscriber};
 use sqlx::PgPool;
 use std::net::TcpListener;
 use secrecy::ExposeSecret;

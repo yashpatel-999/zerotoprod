@@ -24,3 +24,22 @@ Response HTTP/1.1 500 Internal Server Error
 2025-10-24T10:17:25.073557Z  INFO shutting down idle worker
 2025-10-24T10:17:25.074722Z  INFO shutting down idle worker
 2025-10-24T10:17:25.075879Z  INFO shutting down idle worker
+2025-10-24T10:44:03.301919Z  INFO starting 8 workers
+2025-10-24T10:44:03.302375Z  INFO Tokio runtime found; starting in existing Tokio runtime
+2025-10-24T10:44:03.302764Z  INFO starting service: "actix-web-service-127.0.0.1:8000", workers: 8, listening on: 127.0.0.1:8000
+2025-10-24T10:44:13.158268Z  INFO HTTP request{http.method=POST http.route=/subscriptions http.flavor=1.1 http.scheme=http http.host=127.0.0.1:8000 http.client_ip=127.0.0.1 http.user_agent=PostmanRuntime/7.49.0 http.target=/subscriptions otel.name=HTTP POST /subscriptions otel.kind="server" request_id=f62e6b59-f7a4-420d-b8c9-c3c5dc128d10}:Adding a new subscriber{request_id=21d67a15-2d59-471a-b1d6-22376e363a31 subscriber_email=nithwesh@gmail.com subscriber_name=nithwesh}:Saving new subscriber details in the database{subscriber_id=6a21e008-f0d4-457e-b6f4-85db5eae7f42 subscriber_email=nithwesh@gmail.com subscriber_name=nithwesh}: return=()
+2025-10-24T10:44:13.160041Z  INFO HTTP request{http.method=POST http.route=/subscriptions http.flavor=1.1 http.scheme=http http.host=127.0.0.1:8000 http.client_ip=127.0.0.1 http.user_agent=PostmanRuntime/7.49.0 http.target=/subscriptions otel.name=HTTP POST /subscriptions otel.kind="server" request_id=f62e6b59-f7a4-420d-b8c9-c3c5dc128d10}:Adding a new subscriber{request_id=21d67a15-2d59-471a-b1d6-22376e363a31 subscriber_email=nithwesh@gmail.com subscriber_name=nithwesh}: return=HttpResponse { error: None, res: 
+Response HTTP/1.1 200 OK
+  headers:
+  body: Sized(0)
+ }
+2025-10-24T10:44:35.731123Z  INFO SIGINT received; starting forced shutdown
+2025-10-24T10:44:35.733122Z  INFO shutting down idle worker
+2025-10-24T10:44:35.734353Z  INFO shutting down idle worker
+2025-10-24T10:44:35.735340Z  INFO accept thread stopped
+2025-10-24T10:44:35.736583Z  INFO shutting down idle worker
+2025-10-24T10:44:35.737661Z  INFO shutting down idle worker
+2025-10-24T10:44:35.738622Z  INFO shutting down idle worker
+2025-10-24T10:44:35.739563Z  INFO shutting down idle worker
+2025-10-24T10:44:35.740862Z  INFO shutting down idle worker
+2025-10-24T10:44:35.741857Z  INFO shutting down idle worker

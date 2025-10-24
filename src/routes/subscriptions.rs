@@ -54,13 +54,13 @@ pub async fn insert_subscriber(pool: &PgPool, new_subscriber: &NewSubscriber) ->
     tracing::Span::current()
         .record("subscriber_id", tracing::field::display(&subscriber_id))
         .record("subscriber_email", tracing::field::display(&new_subscriber.email))
-        .record("subscriber_name", tracing::field::display(new_subscriber.name.inner_ref()));
+        .record("subscriber_name", tracing::field::display(new_subscriber.name.as_ref()));
 
     sqlx::query!(
         r#"INSERT INTO subscriptions (id, email, name, subscribed_at) VALUES ($1, $2, $3, $4)"#,
         subscriber_id,
         new_subscriber.email,
-        new_subscriber.name.inner_ref(),
+        new_subscriber.name.as_ref(),
         Utc::now()
     )
     .execute(pool)

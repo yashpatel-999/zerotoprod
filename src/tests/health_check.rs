@@ -6,7 +6,6 @@ use std::net::TcpListener;
 use sqlx::{Connection,Executor,PgConnection,PgPool};
 use once_cell::sync::Lazy;
 use secrecy::ExposeSecret;
-use tracing_appender::non_blocking::WorkerGuard;
 
 static TRACING: Lazy<()> = Lazy::new(|| {
     let default_filter_level = "info".to_string();

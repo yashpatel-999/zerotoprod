@@ -1,4 +1,5 @@
 mod subscriptions;
+pub mod domain;
 
 pub use subscriptions::*;
 

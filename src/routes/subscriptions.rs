@@ -2,7 +2,7 @@ use actix_web::{HttpResponse, web};
 use chrono::Utc;
 use sqlx::PgPool;
 use uuid::Uuid;
-use crate::domain::{NewSubscriber, SubscriberName};
+use crate::routes::domain::{SubscriberName, NewSubscriber};
 
 #[derive(serde::Deserialize)]
 pub struct FormData {
@@ -25,14 +25,14 @@ pub async fn subscribe(form: web::Form<FormData>, pool: web::Data<PgPool>) -> Ht
         .record("subscriber_email", tracing::field::display(&form.email))
         .record("subscriber_name", tracing::field::display(&form.name));
 
-    let name=match(SubscriberName::parse(form.0.name)){
-        Ok(name)=>name,
-        Err(_)=>return HttpResponse::BadRequest().finish(),
+    let name = match SubscriberName::parse(form.0.name) {
+        Ok(name) => name,
+        Err(_) => return HttpResponse::BadRequest().finish(),
     };
-    
+
     let new_subscriber = NewSubscriber {
         email: form.0.email,
-        name: SubscriberName::parse(form.0.name).expect("Name Valiation Failed")
+        name: name
     };
     
     match insert_subscriber(&pool, &new_subscriber).await {

@@ -30,3 +30,22 @@ Response HTTP/1.1 200 OK
 2025-10-27T04:28:11.216287Z  INFO shutting down idle worker
 2025-10-27T04:28:11.216679Z  INFO shutting down idle worker
 2025-10-27T04:28:11.217012Z  INFO shutting down idle worker
+2025-10-27T05:33:46.131519Z  INFO starting 8 workers
+2025-10-27T05:33:46.132011Z  INFO Tokio runtime found; starting in existing Tokio runtime
+2025-10-27T05:33:46.132476Z  INFO starting service: "actix-web-service-127.0.0.1:8000", workers: 8, listening on: 127.0.0.1:8000
+2025-10-27T05:34:07.308882Z  INFO HTTP request{http.method=POST http.route=/subscriptions http.flavor=1.1 http.scheme=http http.host=127.0.0.1:8000 http.client_ip=127.0.0.1 http.user_agent=PostmanRuntime/7.49.0 http.target=/subscriptions otel.name=HTTP POST /subscriptions otel.kind="server" request_id=63ffcaf5-3a1d-4764-8c66-2503f385a9ce}:Adding a new subscriber{request_id=97ac4902-42ad-44cf-a881-e637ec4ae4ad subscriber_email=binnu@gmail.com subscriber_name=binnu}:Saving new subscriber details in the database{subscriber_id=681738cf-a66a-4dc9-b0d1-68e822ff126f subscriber_email=binnu@gmail.com subscriber_name=binnu}: return=()
+2025-10-27T05:34:07.310011Z  INFO HTTP request{http.method=POST http.route=/subscriptions http.flavor=1.1 http.scheme=http http.host=127.0.0.1:8000 http.client_ip=127.0.0.1 http.user_agent=PostmanRuntime/7.49.0 http.target=/subscriptions otel.name=HTTP POST /subscriptions otel.kind="server" request_id=63ffcaf5-3a1d-4764-8c66-2503f385a9ce}:Adding a new subscriber{request_id=97ac4902-42ad-44cf-a881-e637ec4ae4ad subscriber_email=binnu@gmail.com subscriber_name=binnu}: return=HttpResponse { error: None, res: 
+Response HTTP/1.1 200 OK
+  headers:
+  body: Sized(0)
+ }
+2025-10-27T05:34:43.344000Z  INFO SIGINT received; starting forced shutdown
+2025-10-27T05:34:43.347684Z  INFO accept thread stopped
+2025-10-27T05:34:43.348772Z  INFO shutting down idle worker
+2025-10-27T05:34:43.349970Z  INFO shutting down idle worker
+2025-10-27T05:34:43.351276Z  INFO shutting down idle worker
+2025-10-27T05:34:43.353741Z  INFO shutting down idle worker
+2025-10-27T05:34:43.354833Z  INFO shutting down idle worker
+2025-10-27T05:34:43.355951Z  INFO shutting down idle worker
+2025-10-27T05:34:43.357108Z  INFO shutting down idle worker
+2025-10-27T05:34:43.358196Z  INFO shutting down idle worker

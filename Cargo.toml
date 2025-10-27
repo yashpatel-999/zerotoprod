@@ -23,6 +23,7 @@ tracing-actix-web = "0.5"
 tracing-appender = "0.2"
 unicode-segmentation = "1"
 claim = "0.5"
+validator = "0.14"
 
 
 [dependencies.sqlx]

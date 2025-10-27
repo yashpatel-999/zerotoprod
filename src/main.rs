@@ -8,7 +8,7 @@ use secrecy::ExposeSecret;
 
 
 #[tokio::main]
-async fn main() -> std::io::Result<()> {
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let (subscriber,_guard)=get_dual_subscriber(
         "zerotoprod".into(),
         "info".into(),
@@ -16,10 +16,9 @@ async fn main() -> std::io::Result<()> {
         "zerotoprod"
     );
     init_subscriber(subscriber);
-    let configuration = get_configuration().expect("Failed to read configuration.");
+    let configuration = get_configuration()?;
     let connection_pool = PgPool::connect(&configuration.database.connection_string().expose_secret())
-        .await
-        .expect("Failed to connect to Postgres.");
+        .await?;
     let address = format!("127.0.0.1:{}", configuration.application_port);
     let listener = TcpListener::bind(address)?;
     run(listener, connection_pool)?.await?;

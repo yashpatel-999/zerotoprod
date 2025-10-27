@@ -30,3 +30,38 @@ Response HTTP/1.1 200 OK
 2025-10-27T10:13:01.073845Z  INFO shutting down idle worker
 2025-10-27T10:13:01.074901Z  INFO shutting down idle worker
 2025-10-27T10:13:01.076387Z  INFO shutting down idle worker
+2025-10-27T10:28:37.678486Z  INFO starting 8 workers
+2025-10-27T10:28:37.679077Z  INFO Tokio runtime found; starting in existing Tokio runtime
+2025-10-27T10:28:37.679541Z  INFO starting service: "actix-web-service-127.0.0.1:8000", workers: 8, listening on: 127.0.0.1:8000
+2025-10-27T10:28:49.842627Z  INFO starting 8 workers
+2025-10-27T10:28:49.843179Z  INFO Tokio runtime found; starting in existing Tokio runtime
+2025-10-27T10:28:49.843646Z  INFO starting service: "actix-web-service-127.0.0.1:8000", workers: 8, listening on: 127.0.0.1:8000
+2025-10-27T10:29:15.775149Z  INFO HTTP request{http.method=POST http.route=/subscriptions http.flavor=1.1 http.scheme=http http.host=127.0.0.1:8000 http.client_ip=127.0.0.1 http.user_agent=PostmanRuntime/7.49.0 http.target=/subscriptions otel.name=HTTP POST /subscriptions otel.kind="server" request_id=e35e90b0-0b40-4f38-9f1a-b5a3f78ebabb}:Adding a new subscriber{request_id=e5820560-4052-437b-8144-2c3377b0785e subscriber_email=nikhil@gmail.com subscriber_name=nikhil}:Saving new subscriber details in the database{subscriber_id=0923c369-79c2-4101-bd92-1b6868a23d8f subscriber_email=nikhil@gmail.com subscriber_name=nikhil}: return=()
+2025-10-27T10:29:15.777135Z  INFO HTTP request{http.method=POST http.route=/subscriptions http.flavor=1.1 http.scheme=http http.host=127.0.0.1:8000 http.client_ip=127.0.0.1 http.user_agent=PostmanRuntime/7.49.0 http.target=/subscriptions otel.name=HTTP POST /subscriptions otel.kind="server" request_id=e35e90b0-0b40-4f38-9f1a-b5a3f78ebabb}:Adding a new subscriber{request_id=e5820560-4052-437b-8144-2c3377b0785e subscriber_email=nikhil@gmail.com subscriber_name=nikhil}: return=Ok(HttpResponse { error: None, res: 
+Response HTTP/1.1 200 OK
+  headers:
+  body: Sized(0)
+ })
+2025-10-27T10:32:12.948059Z  INFO SIGINT received; starting forced shutdown
+2025-10-27T10:32:12.950275Z  INFO accept thread stopped
+2025-10-27T10:32:12.951421Z  INFO shutting down idle worker
+2025-10-27T10:32:12.953049Z  INFO shutting down idle worker
+2025-10-27T10:32:12.954080Z  INFO shutting down idle worker
+2025-10-27T10:32:12.955210Z  INFO shutting down idle worker
+2025-10-27T10:32:12.955816Z  INFO shutting down idle worker
+2025-10-27T10:32:12.956528Z  INFO shutting down idle worker
+2025-10-27T10:32:12.957082Z  INFO shutting down idle worker
+2025-10-27T10:32:12.957664Z  INFO shutting down idle worker
+2025-10-27T10:32:47.170345Z  INFO starting 8 workers
+2025-10-27T10:32:47.170676Z  INFO Tokio runtime found; starting in existing Tokio runtime
+2025-10-27T10:32:47.170976Z  INFO starting service: "actix-web-service-127.0.0.1:8000", workers: 8, listening on: 127.0.0.1:8000
+2025-10-27T10:32:49.434967Z  INFO SIGINT received; starting forced shutdown
+2025-10-27T10:32:49.435590Z  INFO shutting down idle worker
+2025-10-27T10:32:49.435882Z  INFO accept thread stopped
+2025-10-27T10:32:49.436111Z  INFO shutting down idle worker
+2025-10-27T10:32:49.436350Z  INFO shutting down idle worker
+2025-10-27T10:32:49.436609Z  INFO shutting down idle worker
+2025-10-27T10:32:49.436860Z  INFO shutting down idle worker
+2025-10-27T10:32:49.437104Z  INFO shutting down idle worker
+2025-10-27T10:32:49.437397Z  INFO shutting down idle worker
+2025-10-27T10:32:49.437647Z  INFO shutting down idle worker

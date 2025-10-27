@@ -10,7 +10,7 @@ use tracing_subscriber::fmt;
 pub fn init_subscriber(subscriber: impl Subscriber + Send + Sync + 'static) {
     LogTracer::init().ok();
     set_global_default(subscriber).ok();
-
+}
 pub fn get_dual_subscriber(
     name:String,
     env_filter:String,

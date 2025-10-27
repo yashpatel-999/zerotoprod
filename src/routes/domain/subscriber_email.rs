@@ -1,14 +1,15 @@
 use validator::validate_email;
+use crate::error::SubscribeError;
 
 #[derive(Debug)]
 pub struct SubscriberEmail(String);
 
 impl SubscriberEmail{
-    pub fn parse(s:String)->Result<SubscriberEmail,String>{
+    pub fn parse(s:String)->Result<SubscriberEmail,SubscribeError>{
         if validate_email(&s){
             Ok(Self(s))
         } else{
-            Err(format!("{} is not valid subscriber email",s))
+            Err(SubscribeError::ValidationError(format!("Invalid email address: '{}'",s)))
         }
     }
 }

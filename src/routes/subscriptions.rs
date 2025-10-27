@@ -3,6 +3,7 @@ use chrono::Utc;
 use sqlx::PgPool;
 use uuid::Uuid;
 use crate::routes::domain::{SubscriberName, NewSubscriber, SubscriberEmail};
+use crate::error::SubscribeError;
 
 #[derive(serde::Deserialize)]
 pub struct FormData {
@@ -11,7 +12,7 @@ pub struct FormData {
 }
 
 impl TryFrom<FormData> for NewSubscriber{
-    type Error=String;
+    type Error = SubscribeError;
     fn try_from(value:FormData)->Result<Self,Self::Error>{
         let name=SubscriberName::parse(value.name)?;
         let email=SubscriberEmail::parse(value.email)?;
@@ -29,20 +30,19 @@ impl TryFrom<FormData> for NewSubscriber{
     ),
     ret
 )]
-pub async fn subscribe(form: web::Form<FormData>, pool: web::Data<PgPool>) -> HttpResponse {
+pub async fn subscribe(form: web::Form<FormData>, pool: web::Data<PgPool>) -> Result<HttpResponse,SubscribeError> {
     tracing::Span::current()
         .record("subscriber_email", tracing::field::display(&form.email))
         .record("subscriber_name", tracing::field::display(&form.name));
     
-    let new_subscriber = match form.0.try_into(){
-        Ok(form)=>form,
-        Err(_)=>return HttpResponse::BadRequest().finish(),
-    }
+    let new_subscriber =form.0.try_into()
+        .map_err(|e|{
+            tracing::error!("Failed to parse form data: {:?}",e);
+            e
+        })?;
     
-    match insert_subscriber(&pool, &new_subscriber).await {
-        Ok(_) => HttpResponse::Ok().finish(),
-        Err(_) => HttpResponse::InternalServerError().finish(),
-    }
+    insert_subscriber(&pool, &new_subscriber).await?;
+    Ok(HttpResponse::Ok().finish())
 }
 
 #[tracing::instrument(
@@ -56,7 +56,7 @@ pub async fn subscribe(form: web::Form<FormData>, pool: web::Data<PgPool>) -> Ht
     ret,
     err
 )]
-pub async fn insert_subscriber(pool: &PgPool, new_subscriber: &NewSubscriber) -> Result<(), sqlx::Error> {
+pub async fn insert_subscriber(pool: &PgPool, new_subscriber: &NewSubscriber) -> Result<(), SubscribeError> {
     let subscriber_id = Uuid::new_v4();
 
     tracing::Span::current()
@@ -75,7 +75,7 @@ pub async fn insert_subscriber(pool: &PgPool, new_subscriber: &NewSubscriber) ->
     .await
     .map_err(|e| {
         tracing::error!("Failed to execute query: {:?}", e);
-        e
+        SubscribeError::DatabaseError(e)
     })?;
     
     Ok(())

@@ -1,11 +1,6 @@
 mod subscriptions;
 pub mod domain;
+mod health_check;
 
+pub use health_check::*;
 pub use subscriptions::*;
-
-use actix_web::HttpResponse;
-
-#[tracing::instrument(name="Health check endpoint")]
-pub async fn health_check() -> HttpResponse {
-    HttpResponse::Ok().finish()
-}

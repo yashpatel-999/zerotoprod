@@ -8,9 +8,8 @@ use tracing_subscriber::fmt;
 
 
 pub fn init_subscriber(subscriber: impl Subscriber + Send + Sync + 'static) {
-    LogTracer::init().expect("Failed to set logger");
-    set_global_default(subscriber).expect("Failed to set subscriber");
-}
+    LogTracer::init().ok();
+    set_global_default(subscriber).ok();
 
 pub fn get_dual_subscriber(
     name:String,

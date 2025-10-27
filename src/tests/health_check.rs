@@ -10,15 +10,16 @@ use secrecy::ExposeSecret;
 static TRACING: Lazy<()> = Lazy::new(|| {
     let default_filter_level = "info".to_string();
     let subscriber_name = "test".to_string();
+    
     if std::env::var("TEST_LOG").is_ok() {
-        let (subscriber,guard) = get_dual_subscriber(subscriber_name, default_filter_level, "TestLogs","zerotoprod");
+        let (subscriber, _guard) = get_dual_subscriber(subscriber_name, default_filter_level, "TestLogs", "zerotoprod");
         init_subscriber(subscriber);
-        std::mem::forget(guard);
+        // Note: We intentionally don't drop the guard here to keep the appender alive
     } else {
-        let (subscriber,guard) = get_dual_subscriber(subscriber_name, default_filter_level,  "TestLogs","zerotoprod");
+        let (subscriber, _guard) = get_dual_subscriber(subscriber_name, default_filter_level, "TestLogs", "zerotoprod");
         init_subscriber(subscriber);
-        std::mem::forget(guard);
-    };
+        // Note: We intentionally don't drop the guard here to keep the appender alive
+    }
 });
 
 pub struct TestApp{

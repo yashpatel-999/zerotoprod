@@ -15,9 +15,8 @@ impl SubscriberName{
             return Err(SubscribeError::ValidationError(format!("Invalid subscriber name: 'name should not be greater than 256 characters'")));
         }
         let forbidden_characters = ['/', '(', ')', '"', '<', '>', '\\', '{', '}'];
-        let contains_forbidden_characters = s.chars().any(|g| forbidden_characters.contains(&g));
-        if contains_forbidden_characters{
-            return Err(SubscribeError::ValidationError(format!("Invalid subscriber name: 'name should not contain '{:?}'",forbidden_characters)));
+        if let Some(c)=s.trim().chars().find(|g| forbidden_characters.contains(g)){
+            return Err(SubscribeError::ValidationError(format!("Invalid subscriber name: 'name should not contain '{}",c)))
         }
         Ok(Self(s))
     }

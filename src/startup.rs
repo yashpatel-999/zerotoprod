@@ -4,11 +4,12 @@ use actix_web::{App, HttpServer, web};
 use sqlx::PgPool;
 use std::net::TcpListener;
 use tracing_actix_web::TracingLogger;
+use crate::error::StartupError;
 
 pub fn run(
     listener: TcpListener,
     connection: PgPool,
-) -> Result<Server, std::io::Error> {
+) -> Result<Server, StartupError> {
     let connection = web::Data::new(connection);
     let server = HttpServer::new(move || {
         App::new()
@@ -17,7 +18,8 @@ pub fn run(
             .route("/subscriptions", web::post().to(subscribe))
             .app_data(connection.clone())
     })
-    .listen(listener)?
+    .listen(listener)
+    .map_err(StartupError::ServerBind)?
     .run();
     Ok(server)
 }

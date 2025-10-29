@@ -89,3 +89,16 @@ Response HTTP/1.1 200 OK
 2025-10-28T05:44:13.926117Z  INFO shutting down idle worker
 2025-10-28T05:44:13.926335Z  INFO shutting down idle worker
 2025-10-28T05:44:13.926773Z  INFO shutting down idle worker
+2025-10-28T11:24:53.627618Z  INFO starting 8 workers
+2025-10-28T11:24:53.628167Z  INFO Tokio runtime found; starting in existing Tokio runtime
+2025-10-28T11:24:53.628647Z  INFO starting service: "actix-web-service-127.0.0.1:8000", workers: 8, listening on: 127.0.0.1:8000
+2025-10-28T12:04:47.419305Z  INFO SIGINT received; starting forced shutdown
+2025-10-28T12:04:47.420178Z  INFO shutting down idle worker
+2025-10-28T12:04:47.420521Z  INFO shutting down idle worker
+2025-10-28T12:04:47.421022Z  INFO shutting down idle worker
+2025-10-28T12:04:47.421385Z  INFO shutting down idle worker
+2025-10-28T12:04:47.421669Z  INFO shutting down idle worker
+2025-10-28T12:04:47.421920Z  INFO shutting down idle worker
+2025-10-28T12:04:47.422175Z  INFO shutting down idle worker
+2025-10-28T12:04:47.422470Z  INFO shutting down idle worker
+2025-10-28T12:04:47.422805Z  INFO accept thread stopped

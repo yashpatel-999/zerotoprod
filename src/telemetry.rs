@@ -5,18 +5,39 @@ use tracing_log::LogTracer;
 use tracing_subscriber::{layer::SubscriberExt,EnvFilter,Registry};
 use tracing_appender::{non_blocking,rolling};
 use tracing_subscriber::fmt;
+use crate::error::TelemetryError;
 
 
-pub fn init_subscriber(subscriber: impl Subscriber + Send + Sync + 'static) {
-    LogTracer::init().ok();
-    set_global_default(subscriber).ok();
+pub fn init_subscriber(subscriber: impl Subscriber + Send + Sync + 'static) ->Result<(),TelemetryError>{
+    LogTracer::init().map_err(TelemetryError::LogTracerInit)?;
+    set_global_default(subscriber).map_err(TelemetryError::SubscriberInit)?;
+    Ok(())
 }
+
+
 pub fn get_dual_subscriber(
     name:String,
     env_filter:String,
     log_directory:&str,
     file_prefix:&str,
-)->(impl Subscriber + Send +Sync, tracing_appender::non_blocking::WorkerGuard){
+)->Result<(impl Subscriber + Send +Sync, tracing_appender::non_blocking::WorkerGuard),TelemetryError>{
+    if name.is_empty() {
+        return Err(TelemetryError::InvalidConfiguration(
+            "Subscriber name cannot be empty".to_string()
+        ));
+    }
+    
+    if log_directory.is_empty() {
+        return Err(TelemetryError::InvalidConfiguration(
+            "Log directory cannot be empty".to_string()
+        ));
+    }
+    
+    if file_prefix.is_empty() {
+        return Err(TelemetryError::InvalidConfiguration(
+            "File prefix cannot be empty".to_string()
+        ));
+    }
     let env_filter=EnvFilter::try_from_default_env()
         .unwrap_or_else(|_| EnvFilter::new(env_filter));
     
@@ -36,5 +57,5 @@ pub fn get_dual_subscriber(
         .with(console_layer)
         .with(file_layer);
 
-    (subscriber,guard)
+    Ok((subscriber,guard))
 }

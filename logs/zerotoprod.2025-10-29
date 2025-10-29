@@ -1,0 +1,49 @@
+2025-10-29T05:01:21.222989Z  INFO starting 8 workers
+2025-10-29T05:05:41.856316Z  INFO starting 8 workers
+2025-10-29T05:05:41.856798Z  INFO Tokio runtime found; starting in existing Tokio runtime
+2025-10-29T05:05:41.857188Z  INFO starting service: "actix-web-service-127.0.0.1:8000", workers: 8, listening on: 127.0.0.1:8000
+2025-10-29T05:05:48.073507Z  INFO SIGINT received; starting forced shutdown
+2025-10-29T05:05:48.075719Z  INFO accept thread stopped
+2025-10-29T05:05:48.076976Z  INFO shutting down idle worker
+2025-10-29T05:05:48.078139Z  INFO shutting down idle worker
+2025-10-29T05:05:48.079323Z  INFO shutting down idle worker
+2025-10-29T05:05:48.080396Z  INFO shutting down idle worker
+2025-10-29T05:05:48.081506Z  INFO shutting down idle worker
+2025-10-29T05:05:48.082953Z  INFO shutting down idle worker
+2025-10-29T05:05:48.084095Z  INFO shutting down idle worker
+2025-10-29T05:05:48.084933Z  INFO shutting down idle worker
+2025-10-29T05:07:54.571076Z  INFO starting 8 workers
+2025-10-29T05:07:54.571632Z  INFO Tokio runtime found; starting in existing Tokio runtime
+2025-10-29T05:07:54.572013Z  INFO starting service: "actix-web-service-127.0.0.1:8000", workers: 8, listening on: 127.0.0.1:8000
+2025-10-29T05:12:22.493516Z  INFO starting 8 workers
+2025-10-29T05:12:22.494014Z  INFO Tokio runtime found; starting in existing Tokio runtime
+2025-10-29T05:12:22.494333Z  INFO starting service: "actix-web-service-127.0.0.1:80", workers: 8, listening on: 127.0.0.1:80
+2025-10-29T05:13:02.005242Z  INFO SIGINT received; starting forced shutdown
+2025-10-29T05:13:02.007970Z  INFO accept thread stopped
+2025-10-29T05:13:02.009307Z  INFO shutting down idle worker
+2025-10-29T05:13:02.010518Z  INFO shutting down idle worker
+2025-10-29T05:13:02.012031Z  INFO shutting down idle worker
+2025-10-29T05:13:02.013015Z  INFO shutting down idle worker
+2025-10-29T05:13:02.014422Z  INFO shutting down idle worker
+2025-10-29T05:13:02.015451Z  INFO shutting down idle worker
+2025-10-29T05:13:02.016553Z  INFO shutting down idle worker
+2025-10-29T05:13:02.017666Z  INFO shutting down idle worker
+2025-10-29T09:03:35.578127Z  INFO starting 8 workers
+2025-10-29T09:03:35.578525Z  INFO Tokio runtime found; starting in existing Tokio runtime
+2025-10-29T09:03:35.578958Z  INFO starting service: "actix-web-service-127.0.0.1:8000", workers: 8, listening on: 127.0.0.1:8000
+2025-10-29T09:04:00.886353Z  INFO HTTP request{http.method=POST http.route=/subscriptions http.flavor=1.1 http.scheme=http http.host=127.0.0.1:8000 http.client_ip=127.0.0.1 http.user_agent=PostmanRuntime/7.49.0 http.target=/subscriptions otel.name=HTTP POST /subscriptions otel.kind="server" request_id=3304dc07-e42f-4e7b-8b99-41aff6479ad7}:Adding a new subscriber{request_id=2a15d538-ab07-4b29-a8fd-6396c993b497 subscriber_email=jain.doe@example.com subscriber_name=jain doe}:Saving new subscriber details in the database{subscriber_id=e439cd48-4e3f-4dfe-9dfd-137089f0e104 subscriber_email=jain.doe@example.com subscriber_name=jain doe}: return=()
+2025-10-29T09:04:00.887243Z  INFO HTTP request{http.method=POST http.route=/subscriptions http.flavor=1.1 http.scheme=http http.host=127.0.0.1:8000 http.client_ip=127.0.0.1 http.user_agent=PostmanRuntime/7.49.0 http.target=/subscriptions otel.name=HTTP POST /subscriptions otel.kind="server" request_id=3304dc07-e42f-4e7b-8b99-41aff6479ad7}:Adding a new subscriber{request_id=2a15d538-ab07-4b29-a8fd-6396c993b497 subscriber_email=jain.doe@example.com subscriber_name=jain doe}: return=Ok(HttpResponse { error: None, res: 
+Response HTTP/1.1 200 OK
+  headers:
+  body: Sized(0)
+ })
+2025-10-29T09:11:45.473167Z  INFO SIGINT received; starting forced shutdown
+2025-10-29T09:11:45.475550Z  INFO accept thread stopped
+2025-10-29T09:11:45.476761Z  INFO shutting down idle worker
+2025-10-29T09:11:45.478010Z  INFO shutting down idle worker
+2025-10-29T09:11:45.478953Z  INFO shutting down idle worker
+2025-10-29T09:11:45.480000Z  INFO shutting down idle worker
+2025-10-29T09:11:45.481266Z  INFO shutting down idle worker
+2025-10-29T09:11:45.482498Z  INFO shutting down idle worker
+2025-10-29T09:11:45.483679Z  INFO shutting down idle worker
+2025-10-29T09:11:45.484978Z  INFO shutting down idle worker
